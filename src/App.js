@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import uuid from 'node-uuid';
-import shortId from 'shortid';
 
 class App extends Component {
     constructor () {
@@ -35,12 +34,13 @@ class App extends Component {
       <div className="App">
         <button onClick={ this._handleClick.bind(this) }>Add</button>
           <ul>
-              <ReactCSSTransitionGroup  transitionName="example" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
+              <ReactCSSTransitionGroup  
+                transitionName="example" 
+                transitionEnterTimeout={700} 
+                transitionLeaveTimeout={700}>
                   {this.state.list.map((item, index) => {
-                    let id = shortId.generate();
-                      console.log(id);
                       return (
-                          <li key={ id } onClick={ this._handleRemoveClick.bind(this, index) }>
+                          <li key={ index } onClick={ this._handleRemoveClick.bind(this, index) }>
                               { item }
                           </li>
                       )
